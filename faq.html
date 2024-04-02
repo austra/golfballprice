@@ -1,42 +1,55 @@
-Frequently Asked Questions
-Where do these prices come from?
-We use Amazon's Product Advertising API to retrieve product information.
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Golf Ball Price - FAQ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Frequently Asked Questions" />
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div id="container">
+            <div id="content" class="about">
+                <h1>Frequently Asked Questions</h1>
 
-How often is this site updated?
-Prices are updated every four hours.
+                <h2>Where do these prices come from?</h2>
+                <p>We use Amazon's <a href="https://webservices.amazon.com/paapi5/documentation/">Product Advertising API</a> to retrieve product information.</p>
 
-Why doesn't this product appear on your site?
-We aggressively filter our product list to remove duplicates, fake products, spam, and out of stock listings. This results in the removal of approximately 1.9% of all listings.
+                <h2>How often is this site updated?</h2>
+                <p>Prices are updated every four hours.</p>
 
-In some cases, our algorithms cannot correctly classify products into a known category, so they may be unintentionally excluded. The list of unclassifiable products is reviewed by a human editor semi-regularly.
+                <h2>Why doesn't this product appear on your site?</h2>
+                <p>We aggressively filter our product list to remove duplicates, fake products, spam, and out of stock listings. This results in the removal of approximately 1.9% of all listings.</p>
+                <p>In some cases, our algorithms cannot correctly classify products into a known category, so they may be unintentionally excluded. The list of unclassifiable products is reviewed by a human editor semi-regularly.</p>
+                <p>We are also limited by the functionality of the Product Advertising API and cannot retrieve more than 100 items per query and can only perform a limited number of queries per day. This leads to the exclusion of many products with a low sales ranking. If there is a product that you believe should be listed, please email its ASIN to <a href="mailto:support@golfballprice.com">support@golfballprice.com</a></p>
 
-We are also limited by the functionality of the Product Advertising API and cannot retrieve more than 100 items per query and can only perform a limited number of queries per day. This leads to the exclusion of many products with a low sales ranking. If there is a product that you believe should be listed, please email its ASIN to support@golfballprice.com
+                <h2>Why were the listings for my country removed?</h2>
+                <p>Amazon's affiliate program and API access is managed by a different team in each country and some of these teams do not believe that processing, filtering, sorting, editing, and removal of counterfeit products is valuable to the customer. The following marketplaces have threatened or suspended our accounts and are unlikely to return to golfballprice.com without clear policy changes from Amazon: amazon.jp, amazon.nl, amazon.it, amazon.sg.</p>
 
-Why were the listings for my country removed?
-Amazon's affiliate program and API access is managed by a different team in each country and some of these teams do not believe that processing, filtering, sorting, editing, and removal of counterfeit products is valuable to the customer. The following marketplaces have threatened or suspended our accounts and are unlikely to return to golfballprice.com without clear policy changes from Amazon: amazon.jp, amazon.nl, amazon.it, amazon.sg.
+                <h2>Can you add complex filters and sorting?</h2>
+                <p>The intent of this site is to be a simple reference rather than a comprehensive search index. If you would like to do more complex analysis, try entering the following into <a href="https://docs.google.com/spreadsheets/">Google Sheets</a>: <code>=IMPORTHTML(&quot;https://golfballprice.com/&quot;, &quot;table&quot;)</code></p>
 
-Can you add complex filters and sorting?
-The intent of this site is to be a simple reference rather than a comprehensive search index. If you would like to do more complex analysis, try entering the following into Google Sheets: =IMPORTHTML("https://golfballprice.com/", "table")
+                <h2>Do you need a graphic designer?</h2>
+                <p>No. This site is designed to maximize information density, accessibility, and performance. More whitespace, colors, and icons won't help.</p>
 
-Do you need a graphic designer?
-No. This site is designed to maximize information density, accessibility, and performance. More whitespace, colors, and icons won't help.
+                <h2></h2>Why shouldn't I buy the cheapest golf ball?</h2>
+                <p>You shouldn't buy the cheapest golf ball because they often lack quality construction and may not provide the performance or durability needed for consistent play, as highlighted by experts at <a href="https://www.golf.com/gear/balls/2020/06/12/how-to-choose-the-right-golf-ball-for-your-game/" target="_blank">Golf.com</a> and <a href="https://www.golf-monthly.co.uk/gear/gear-news/best-golf-balls-70812" target="_blank">Golf Monthly</a>.<p>
 
-Why shouldn't I buy the cheapest golf ball?
-You shouldn't buy the cheapest golf ball because they often lack quality construction and may not provide the performance or durability needed for consistent play, as highlighted by experts at <a href="https://www.golf.com/gear/balls/2020/06/12/how-to-choose-the-right-golf-ball-for-your-game/" target="_blank">Golf.com</a> and <a href="https://www.golf-monthly.co.uk/gear/gear-news/best-golf-balls-70812" target="_blank">Golf Monthly</a>.
+                <h2>What about shipping?</h2>
+                <p>The prices listed here don't include shipping and taxes, as we don't know where you live. The majority of these listings include free shipping, especially if you have <a target="_blank" href="https://www.amazon.com/gp/video/primesignup?ref_=assoc_tag_ph_1402131641212&_encoding=UTF8&camp=1789&creative=9325&linkCode=pf4&tag=golfballprice-20&linkId=5e1464f1a4557f6c5362ef55b3730eaa">Amazon Prime</a> but make sure to check shipping costs before placing an order.</p>
 
+                <h2>Who are you?</h2>
+                <p><a href="https://golfballprice.com/">golfballprice.com</a> is a production of <a href="https://foxcode.me/">Fox Code, LLC</a>.
 
-What about shipping?
-The prices listed here don't include shipping and taxes, as we don't know where you live. The majority of these listings include free shipping, especially if you have <a target="_blank" href="https://www.amazon.com/gp/video/primesignup?ref_=assoc_tag_ph_1402131641212&_encoding=UTF8&camp=1789&creative=9325&linkCode=pf4&tag=golfballprice-20&linkId=5e1464f1a4557f6c5362ef55b3730eaa">Amazon Prime</a> but make sure to check shipping costs before placing an order.
+                <h2>Are you a cop?</h2>
+                <p>Please refer to our <a href="/privacy">Privacy policy</a>.</p>
 
-Who are you?
-golfballprice.com is a production of Fox Code, LLC.
+                <h2 id="disclosures">Is this an ad?</h2>
+                <p>We receive commissions for products purchased through the links on this site through <a href="https://affiliate-program.amazon.com/">Amazon's Affiliate Program</a></p>
 
-Are you a cop?
-Please refer to our <a href="/privacy.html">Privacy policy</a>.
+                <h2>Additional information</h2>
+                <p>Email <a href="mailto:support@golfballprice.com">support@golfballprice.com</a> with any further questions.</p>
 
-Is this an ad?
-We receive commissions for products purchased through the links on this site through Amazon's Affiliate Program
-
-Additional information
-Email <a href="mailto:support@golfballprice.com">support@golfballprice.com</a> with any further questions.
-
+            </div>
+        </div>
+    </body>
+</html>
