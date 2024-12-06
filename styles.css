@@ -111,8 +111,8 @@ tr:hover {
 
 .filters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     margin-bottom: 1rem;
 }
 
@@ -136,22 +136,35 @@ tr:hover {
 }
 
 .filter-group input[type="number"] {
-    width: 100px;
+    width: 5rem;
 }
 
 .price-range {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .search-box {
     width: 100%;
-    max-width: 300px;
 }
 
 tr.hidden {
     display: none;
+}
+
+/* Price timestamp and disclaimer */
+.price-timestamp {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.price-disclaimer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Policy Page Specific */
@@ -209,29 +222,8 @@ tr.hidden {
         display: block;
         overflow-x: auto;
     }
-}
-
-/* Add to styles.css */
-.filters-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns instead of auto-fit */
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.search-box {
-    width: 100%; /* Full width of its grid cell */
-}
-
-/* Make the range inputs more reasonable width */
-.price-range input[type="number"],
-.filter-group input[type="number"] {
-    width: 5rem;
-}
-
-.price-range {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    flex-wrap: wrap;
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
 }
