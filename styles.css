@@ -210,3 +210,28 @@ tr.hidden {
         overflow-x: auto;
     }
 }
+
+/* Add to styles.css */
+.filters-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns instead of auto-fit */
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-box {
+    width: 100%; /* Full width of its grid cell */
+}
+
+/* Make the range inputs more reasonable width */
+.price-range input[type="number"],
+.filter-group input[type="number"] {
+    width: 5rem;
+}
+
+.price-range {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
