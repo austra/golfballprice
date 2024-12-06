@@ -28,6 +28,7 @@
     
     <main class="container">
         <div class="filters">
+            <button class="filter-toggle">Toggle Filters ▼</button>
             <div class="filters-grid">
                 <div class="filter-group">
                     <label for="search">Search Products</label>
@@ -148,7 +149,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Populate filter dropdowns from table data
+            // Mobile filter toggle
+            const filterToggle = document.querySelector('.filter-toggle');
+            const filters = document.querySelector('.filters');
+            
+            filterToggle.addEventListener('click', function() {
+                filters.classList.toggle('collapsed');
+                filterToggle.textContent = filters.classList.contains('collapsed') 
+                    ? 'Show Filters ▼' 
+                    : 'Hide Filters ▲';
+            });
+
+            // Initialize filters collapsed on mobile
+            if (window.innerWidth <= 768) {
+                filters.classList.add('collapsed');
+            }
+
+            // Filter functionality
             const table = document.querySelector('table');
             const rows = Array.from(table.querySelectorAll('tbody tr'));
             
@@ -195,7 +212,7 @@
                     const rowColor = cells[3].textContent.trim();
                     const rowMaterial = cells[4].textContent.trim();
                     const rowCondition = cells[6].textContent.trim();
-                    const price = parseFloat(cells[1].textContent.replace(/[^0-9.]/g, ''));
+                    const price = parseFloat(cells[0].textContent.replace(/[^0-9.]/g, ''));
                     const count = parseInt(cells[2].textContent.trim());
                     
                     const matchesSearch = name.includes(search);
