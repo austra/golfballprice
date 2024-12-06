@@ -149,86 +149,84 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile filter toggle
-            const filterToggle = document.querySelector('.filter-toggle');
-            const filters = document.querySelector('.filters');
-            
-            filterToggle.addEventListener('click', function() {
-                filters.classList.toggle('collapsed');
-                filterToggle.textContent = filters.classList.contains('collapsed') 
-                    ? 'Show Filters ▼' 
-                    : 'Hide Filters ▲';
-            });
+    // Mobile filter toggle
+    const filterToggle = document.querySelector('.filter-toggle');
+    const filterContainer = document.querySelector('.filters');
+    
+    // Hide filters initially
+    filterContainer.classList.add('collapsed');
+    
+    filterToggle.addEventListener('click', function() {
+        filterContainer.classList.toggle('collapsed');
+        this.textContent = filterContainer.classList.contains('collapsed') 
+            ? 'Show Filters ▼' 
+            : 'Hide Filters ▲';
+    });
 
-            // Initialize filters collapsed on mobile
-            if (window.innerWidth <= 768) {
-                filters.classList.add('collapsed');
-            }
-
-            // Filter functionality
-            const table = document.querySelector('table');
-            const rows = Array.from(table.querySelectorAll('tbody tr'));
-            
-            // Get unique values for each filter
-            const colors = new Set(rows.map(row => row.cells[3].textContent.trim()));
-            const materials = new Set(rows.map(row => row.cells[4].textContent.trim()));
-            const conditions = new Set(rows.map(row => row.cells[6].textContent.trim()));
-            
-            // Populate dropdowns
-            populateSelect('color', colors);
-            populateSelect('material', materials);
-            populateSelect('condition', conditions);
-            
-            // Add event listeners to all filters
-            const filters = document.querySelectorAll('select, input');
-            filters.forEach(filter => {
-                filter.addEventListener('change', filterTable);
-                filter.addEventListener('input', filterTable);
-            });
-            
-            function populateSelect(id, values) {
-                const select = document.getElementById(id);
-                values.forEach(value => {
-                    const option = document.createElement('option');
-                    option.value = value;
-                    option.textContent = value;
-                    select.appendChild(option);
-                });
-            }
-            
-            function filterTable() {
-                const search = document.getElementById('search').value.toLowerCase();
-                const color = document.getElementById('color').value;
-                const material = document.getElementById('material').value;
-                const condition = document.getElementById('condition').value;
-                const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
-                const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
-                const countMin = parseInt(document.getElementById('count-min').value) || 0;
-                const countMax = parseInt(document.getElementById('count-max').value) || Infinity;
-                
-                rows.forEach(row => {
-                    const cells = row.cells;
-                    const name = cells[7].querySelector('a').textContent.toLowerCase();
-                    const rowColor = cells[3].textContent.trim();
-                    const rowMaterial = cells[4].textContent.trim();
-                    const rowCondition = cells[6].textContent.trim();
-                    const price = parseFloat(cells[0].textContent.replace(/[^0-9.]/g, ''));
-                    const count = parseInt(cells[2].textContent.trim());
-                    
-                    const matchesSearch = name.includes(search);
-                    const matchesColor = !color || rowColor === color;
-                    const matchesMaterial = !material || rowMaterial === material;
-                    const matchesCondition = !condition || rowCondition === condition;
-                    const matchesPrice = price >= priceMin && price <= priceMax;
-                    const matchesCount = count >= countMin && count <= countMax;
-                    
-                    const matches = matchesSearch && matchesColor && matchesMaterial && 
-                                  matchesCondition && matchesPrice && matchesCount;
-                    
-                    row.classList.toggle('hidden', !matches);
-                });
-            }
+    // Filter functionality
+    const table = document.querySelector('table');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    
+    // Get unique values for each filter
+    const colors = new Set(rows.map(row => row.cells[3].textContent.trim()));
+    const materials = new Set(rows.map(row => row.cells[4].textContent.trim()));
+    const conditions = new Set(rows.map(row => row.cells[6].textContent.trim()));
+    
+    // Populate dropdowns
+    populateSelect('color', colors);
+    populateSelect('material', materials);
+    populateSelect('condition', conditions);
+    
+    // Add event listeners to all filter inputs
+    const filterInputs = document.querySelectorAll('select, input');
+    filterInputs.forEach(filter => {
+        filter.addEventListener('change', filterTable);
+        filter.addEventListener('input', filterTable);
+    });
+    
+    function populateSelect(id, values) {
+        const select = document.getElementById(id);
+        values.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
         });
+    }
+    
+    function filterTable() {
+        const search = document.getElementById('search').value.toLowerCase();
+        const color = document.getElementById('color').value;
+        const material = document.getElementById('material').value;
+        const condition = document.getElementById('condition').value;
+        const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
+        const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
+        const countMin = parseInt(document.getElementById('count-min').value) || 0;
+        const countMax = parseInt(document.getElementById('count-max').value) || Infinity;
+        
+        rows.forEach(row => {
+            const cells = row.cells;
+            const name = cells[7].querySelector('a').textContent.toLowerCase();
+            const rowColor = cells[3].textContent.trim();
+            const rowMaterial = cells[4].textContent.trim();
+            const rowCondition = cells[6].textContent.trim();
+            const price = parseFloat(cells[0].textContent.substring(1)); // Remove $ and parse
+            const count = parseInt(cells[2].textContent.trim());
+            
+            const matchesSearch = name.includes(search);
+            const matchesColor = !color || rowColor === color;
+            const matchesMaterial = !material || rowMaterial === material;
+            const matchesCondition = !condition || rowCondition === condition;
+            const matchesPrice = price >= priceMin && price <= priceMax;
+            const matchesCount = count >= countMin && count <= countMax;
+            
+            const matches = matchesSearch && matchesColor && matchesMaterial && 
+                          matchesCondition && matchesPrice && matchesCount;
+            
+            row.classList.toggle('hidden', !matches);
+        });
+    }
+});
     </script>
 </body>
 </html>
