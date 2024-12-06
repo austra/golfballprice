@@ -253,3 +253,55 @@ tr.hidden {
         overflow-x: auto;
     }
 }
+
+/* Add to styles.css */
+@media (max-width: 768px) {
+    /* Hide table headers on mobile */
+    thead {
+        display: none;
+    }
+
+    /* Convert table rows to cards */
+    table, tbody, tr {
+        display: block;
+    }
+
+    tr {
+        background: white;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    /* Add labels for each cell */
+    td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    /* Price-related cells */
+    td.price-per-ball {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+    }
+
+    /* Product link cell */
+    td:last-child {
+        grid-template-columns: 1fr;
+        margin-top: 0.5rem;
+    }
+
+    td:last-child .amazon-button {
+        width: 100%;
+        text-align: center;
+    }
+}
