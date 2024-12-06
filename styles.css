@@ -109,6 +109,23 @@ tr:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+.filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.filter-toggle:hover {
+    background-color: var(--secondary-color);
+}
+
 .filters-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -217,13 +234,22 @@ tr.hidden {
     background-color: var(--secondary-color);
 }
 
+/* Mobile Styles */
 @media (max-width: 768px) {
+    .filter-toggle {
+        display: block;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters.collapsed .filters-grid {
+        display: none;
+    }
+
     table {
         display: block;
         overflow-x: auto;
-    }
-    
-    .filters-grid {
-        grid-template-columns: 1fr;
     }
 }
