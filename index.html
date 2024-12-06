@@ -195,7 +195,7 @@
                     const rowColor = cells[3].textContent.trim();
                     const rowMaterial = cells[4].textContent.trim();
                     const rowCondition = cells[6].textContent.trim();
-                    const price = parseFloat(cells[1].textContent.replace('$', '').trim());
+                    const price = parseFloat(cells[1].textContent.replace(/[^0-9.]/g, ''));
                     const count = parseInt(cells[2].textContent.trim());
                     
                     const matchesSearch = name.includes(search);
