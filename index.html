@@ -30,8 +30,8 @@
         <div class="filters">
             <div class="filters-grid">
                 <div class="filter-group">
-                    <label for="search">Search</label>
-                    <input type="text" id="search" class="search-box" placeholder="Search products...">
+                    <label for="search">Search Products</label>
+                    <input type="text" id="search" class="search-box" placeholder="Type to search...">
                 </div>
                 <div class="filter-group">
                     <label for="color">Color</label>
@@ -86,7 +86,7 @@
                     <th>Material</th>
                     <th>Dimples</th>
                     <th>Condition</th>
-                    <th>View on Amazon</th>
+                    <th>Product</th>
                 </tr>
             </thead>
             <tbody>
@@ -98,7 +98,11 @@
                     <td>Polyurethane</td>
                     <td>-</td>
                     <td>Used</td>
-                    <td><a href="https://www.amazon.com/dp/B0BN6PQXS1?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">Check Price</a></td>
+                    <td>
+                        <a href="https://www.amazon.com/dp/B0BN6PQXS1?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">
+                            Kirkland Signature Golf Ball Mix
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <td class="price-per-ball">$1.66</td>
@@ -108,7 +112,11 @@
                     <td>Plastic</td>
                     <td>342</td>
                     <td>New</td>
-                    <td><a href="https://www.amazon.com/dp/B08WPVP1G9?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">Check Price</a></td>
+                    <td>
+                        <a href="https://www.amazon.com/dp/B08WPVP1G9?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">
+                            2021 TaylorMade Distance+ Golf Balls
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <td class="price-per-ball">$2.08</td>
@@ -118,7 +126,11 @@
                     <td>Rubber</td>
                     <td>-</td>
                     <td>New</td>
-                    <td><a href="https://www.amazon.com/dp/B0BQWCGX7L?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">Check Price</a></td>
+                    <td>
+                        <a href="https://www.amazon.com/dp/B0BQWCGX7L?tag=golfball0f-20" class="amazon-button" target="_blank" rel="nofollow">
+                            Callaway Golf 2023 Supersoft Golf Balls
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -141,9 +153,9 @@
             const rows = Array.from(table.querySelectorAll('tbody tr'));
             
             // Get unique values for each filter
-            const colors = new Set(rows.map(row => row.cells[3].textContent));
-            const materials = new Set(rows.map(row => row.cells[4].textContent));
-            const conditions = new Set(rows.map(row => row.cells[6].textContent));
+            const colors = new Set(rows.map(row => row.cells[3].textContent.trim()));
+            const materials = new Set(rows.map(row => row.cells[4].textContent.trim()));
+            const conditions = new Set(rows.map(row => row.cells[6].textContent.trim()));
             
             // Populate dropdowns
             populateSelect('color', colors);
@@ -179,12 +191,12 @@
                 
                 rows.forEach(row => {
                     const cells = row.cells;
-                    const name = cells[7].textContent.toLowerCase();
-                    const rowColor = cells[3].textContent;
-                    const rowMaterial = cells[4].textContent;
-                    const rowCondition = cells[6].textContent;
-                    const price = parseFloat(cells[1].textContent.replace('$', ''));
-                    const count = parseInt(cells[2].textContent);
+                    const name = cells[7].querySelector('a').textContent.toLowerCase();
+                    const rowColor = cells[3].textContent.trim();
+                    const rowMaterial = cells[4].textContent.trim();
+                    const rowCondition = cells[6].textContent.trim();
+                    const price = parseFloat(cells[1].textContent.replace('$', '').trim());
+                    const count = parseInt(cells[2].textContent.trim());
                     
                     const matchesSearch = name.includes(search);
                     const matchesColor = !color || rowColor === color;
