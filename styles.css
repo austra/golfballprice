@@ -410,3 +410,50 @@ tr.hidden {
     margin: 1rem 0;
     border-left: 4px solid var(--primary-color);
 }
+
+/* Mobile styles for article price tables */
+@media (max-width: 768px) {
+    .article-price-table table, 
+    .article-price-table tbody, 
+    .article-price-table tr {
+        display: block;
+    }
+
+    .article-price-table tr {
+        background: white;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border: 1px solid #e2e8f0;
+    }
+
+    .article-price-table td {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    .article-price-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-color);
+        font-size: 0.9rem;
+    }
+
+    .article-price-table td.price-per-ball {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+    }
+
+    .article-price-table td:last-child {
+        grid-template-columns: 1fr;
+    }
+
+    .article-price-table td:last-child .amazon-button {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}
