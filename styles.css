@@ -458,6 +458,6 @@ tr.hidden {
     }
 }
 
-[data-label="product"] { 
+[data-label="Product"] { 
     max-width:100px;
 }
