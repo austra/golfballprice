@@ -457,3 +457,7 @@ tr.hidden {
         margin-top: 0.5rem;
     }
 }
+
+[data-label="product"] { 
+    max-width:100px;
+}
